@@ -1,0 +1,50 @@
+<component name="SearchScreen" extends="Group" initialFocus="inputKeyboard" >
+    <script type="text/brightscript" uri="SearchScreen.brs"  />
+        <script type="text/brightscript" uri="Navbar.brs" />
+
+    <interface>
+                        <field id="isTrialExpired" type="boolean" onChange="showSubPopup" />
+
+    </interface>
+
+    <children>
+                        <Poster translation="[0,0]" width="1920" height="1080" uri="pkg:/images/BG.png" />
+
+        <Group id="inputGroup">
+            <Poster uri="pkg:/images/searchBar.png" translation="[340,100]" width="1240" height="106" />
+            <Label id="textLabel" translation="[480,100]" width="1100" height="106" vertAlign="center" horizAlign="left" color="0xFFFFFF" />
+
+            <MiniKeyboard id="inputKeyboard" translation="[669,250]" showTextEditBox="false" keyColor="#FFFFFF" focusedKeyColor="#5676BA"  />
+            <Button id="btnSubmit" translation="[819,900]" minWidth="284" maxWidth="284" height="80" iconUri="" focusedIconUri="" focusBitmapUri="pkg:/images/btnSubmitF.png" focusfootprintbitmapuri="pkg:/images/btnSubmitUF.png" showFocusFootprint="true" />
+
+        </Group>
+
+        <Group id="resultsGroup" visible="false" >
+            <MarkupGrid id="videosList" 
+            itemComponentName="VideoItem"
+            translation="[238,190]"
+            itemSpacing="[32,60]"
+           itemSize="[516,396]"
+            numColumns="3"
+            numRows="2"
+            drawFocusFeedback="true"
+            focusBitmapUri="pkg:/images/itemFocus.png"
+            visible="false"
+         />
+
+        <Button id="btnNoFav" visible="false" translation="[612,212]" minWidth="696" maxWidth="696" height="560" iconUri="" focusedIconUri="" focusBitmapUri="pkg:/images/btnNoResF.png" focusfootprintbitmapuri="pkg:/images/btnNoResUF.png" showFocusFootprint="true" />
+
+                         <Timer   id="videoDurationTimer" repeat="true" duration="1" />
+
+        </Group>
+                            <Poster id="blurOL" uri="pkg:/images/blurOL.png" width="1920" height="1080" translation="[0,0]" visible="false" />
+
+              <Navbar id="navbar" />
+
+                       <Video id="video" visible="false" translation="[0,0]"  />
+
+
+        
+    </children>
+    
+</component>

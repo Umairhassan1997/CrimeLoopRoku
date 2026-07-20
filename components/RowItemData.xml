@@ -1,0 +1,9 @@
+<component name="RowItemData" extends="ContentNode">
+    <interface>
+        <field id="videoTitle" type="string" />
+        <field id="videoUrl" type="string" />
+        <field id="videoThumbnail"  type="string" />
+        <field id="type" type="string" />
+    </interface>
+
+</component>

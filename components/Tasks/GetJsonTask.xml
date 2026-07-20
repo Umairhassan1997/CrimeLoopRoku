@@ -1,0 +1,8 @@
+<component name="GetJsonTask" extends="Task">
+    <script type="text/brightscript" uri="GetJsonTask.brs" />
+    <interface>
+            <field id="content" type="assocarray" />
+
+    </interface>
+    
+</component>

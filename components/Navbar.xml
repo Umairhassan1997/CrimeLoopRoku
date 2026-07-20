@@ -1,0 +1,47 @@
+<component name="Navbar" extends="Group">
+    <script type="text/brightscript"  />
+
+<children>
+    <Poster id="NBG" uri="pkg:/images/nBC.png"  width="198" height="1080" translation="[0,0]" />
+
+<Button id="btnSearchN" translation="[49,220]" height="100" minWidth="293"
+            maxWidth="293" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnSeaF.png"
+            focusFootprintBitmapUri="pkg:/images/btnSeaUf.png" /> 
+            
+     
+    <Button id="btnHomeN" translation="[49,360]" height="100" minWidth="293"
+            maxWidth="293" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnHoF.png"
+            focusFootprintBitmapUri="pkg:/images/btnHouf.png" />
+
+              <Button id="btnSubN" translation="[49,500]" height="100" minWidth="293"
+            maxWidth="293" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnSubF.png"
+            focusFootprintBitmapUri="pkg:/images/btnSubuf.png" />
+
+
+            <Button id="btnFavN" translation="[49,640]" height="100" minWidth="293"
+            maxWidth="293" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnFavF.png"
+            focusFootprintBitmapUri="pkg:/images/btnFavuf.png" />
+
+           
+        
+
+          
+
+            <Button id="btnSettingN" translation="[49,940]" height="100" minWidth="293"
+            maxWidth="293" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnSeTF.png"
+            focusFootprintBitmapUri="pkg:/images/btnSeTuf.png" />
+
+              <Button id="AppLockPopup" translation="[0,0]" height="1080" minWidth="1920" visible="false"
+            maxWidth="1920" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/subExpPopup.png"
+            focusFootprintBitmapUri="pkg:/images/subExpPopup.png" />
+
+
+</children>
+    
+</component>

@@ -1,0 +1,37 @@
+<component name="MainScene" extends="Scene">
+    <script type="text/brightscript" uri="MainScene.brs" />
+    <script type="text/brightscript" uri="UI/ShowHomeScreen.brs" />
+    <script type="text/brightscript" uri="UI/ShowSettingScreen.brs" />
+    <script type="text/brightscript" uri="UI/ShowSearchScreen.brs" />
+    <script type="text/brightscript" uri="UI/ShowFavoriteScreen.brs" />
+    <script type="text/brightscript" uri="UI/ShowTrialScreen.brs" />
+    <script type="text/brightscript" uri="UI/ShowSubscriptionScreen.brs" />
+    <script type="text/brightscript" uri="UI/ScreenStack.brs" />
+    <script type="text/brightscript" uri="UI/VerifySubscription.brs" />
+    <interface>
+        <function name="ShowFavoriteScreen" />
+        <function name="ResetScreen" />
+        <field id="AppLimit" type="integer" />
+        <field id="isSubYearly" type="boolean" />
+        <field id="isSubscribed" type="boolean" alwaysNotify="true" />
+            <function name="getCurrentDuration" />
+        <function name="setCurrentDuration" />
+        <function name="ShowSubscriptionScreen" />
+        <function name="ShowFavoriteScreen" />
+        <function name="ShowHomeScreen" />
+        <function name="ShowSettingScreen" />
+        <function name="ShowSearchScreen" />
+
+        <field id="isSubScreenSelected" type="boolean" value="false" />
+
+        <field id="appExit" type="bool" alwaysnotify="true" value="false" />
+
+
+    </interface>
+    <children>
+                <Timer id="appTimer" duration="1" repeat="true" />
+
+
+    </children>
+
+</component>

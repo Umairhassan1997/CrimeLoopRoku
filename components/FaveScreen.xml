@@ -1,0 +1,48 @@
+<component name="FavoriteScreen" extends="Group" initialFocus="videosList" >
+    <script type="text/brightscript" uri="FaveScreen.brs" />
+        <script type="text/brightscript" uri="Navbar.brs" />
+
+    <interface>
+                <field id="btnBackSelected" alias="btnNoFav.buttonSelected" type="integer" />
+                <field id="isTrialExpired" type="boolean" onChange="showSubPopup" />
+
+        
+    </interface>
+    <children>
+     <Poster translation="[0,0]" width="1920" height="1080" uri="pkg:/images/BG.png" />
+
+     <Button id="btnBack" focusable="true" iconUri=""
+                text="" focusedIconUri="" visible="false" translation="[118, 56]"
+                maxWidth="119" minWidth="119" height="60"
+                focusBitmapUri="pkg:/images/btnBackF.png"
+                focusFootprintBitmapUri="pkg:/images/btnBackUF.png" showFocusFootprint="true" />
+
+
+       
+         <MarkupGrid id="videosList" 
+            itemComponentName="VideoItem"
+            translation="[238,190]"
+            itemSpacing="[32,60]"
+           itemSize="[516,396]"
+            numColumns="3"
+            numRows="2"
+            drawFocusFeedback="true"
+            focusBitmapUri="pkg:/images/itemFocus.png"
+         />
+
+
+        <Button id="btnNoFav" visible="false" translation="[612,212]" minWidth="696" maxWidth="696" height="560" iconUri="" focusedIconUri="" focusBitmapUri="pkg:/images/NoFavF.png" focusfootprintbitmapuri="pkg:/images/NoFavUF.png" showFocusFootprint="true" />
+         <Timer id="focusTimer" duration="0.01" repeat="false" />
+         <Timer   id="videoDurationTimer" repeat="true" duration="1" />
+                    <Poster id="blurOL" uri="pkg:/images/blurOL.png" width="1920" height="1080" translation="[0,0]" visible="false" />
+
+         <Navbar id="navbar" />
+
+            <Video
+            id="VideoPlayer"
+            translation="[0,0]"
+            visible="false"
+        />
+    </children>
+    
+</component>

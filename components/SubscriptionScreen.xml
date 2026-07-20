@@ -1,0 +1,50 @@
+<component name="SubscriptionScreen" extends="Group" initialFocus="btnMonthly" >
+    <script type="text/brightscript" uri="SubscriptionScreen.brs"   />
+            <script type="text/brightscript" uri="Navbar.brs" />
+
+    <interface>
+                   <field id="btnMonthlySelect" alias="btnMonthly.buttonSelected" />
+                    <field id="btnYearlySelect" alias="btnYearly.buttonSelected" />
+ 
+        
+    </interface>
+    <children>
+            <Poster translation="[0,0]" id="BG" uri="pkg:/images/BG.png" width="1920" height="1080"  />
+         <Poster translation="[1194,0]" width="726" height="1080" uri="pkg:/images/sssp.png" />
+
+            <Poster translation="[280,120]" width="660" height="764" uri="pkg:/images/subBG.png" />
+            <Poster translation="[280,483]" width="140" height="110" uri="pkg:/images/SDT.png" />
+
+              <Label id="timerLabel" 
+             text="10:00" 
+              
+             color="0xFFFFFFFF" 
+             horizAlignment="center" 
+             vertAlignment="center"
+             translation="[520, 482]"
+             width="400"
+             height="120" >
+             <Font role="font" uri="pkg:/components/fonts/RobotoMono-Bold.ttf" size="96" />
+
+             </Label>
+
+        <Button id="btnMonthly" translation="[280,642]" height="151" minWidth="633"
+            maxWidth="633" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/MF.png"
+            focusFootprintBitmapUri="pkg:/images/MUF.png" />
+
+             <Button id="btnYearly" translation="[280,833]" height="151" minWidth="633"
+            maxWidth="633" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/YF.png"
+            focusFootprintBitmapUri="pkg:/images/YUF.png" />
+
+            <Button id="btnCancel" translation="[724,825]" height="80" minWidth="470"
+            maxWidth="470" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnCancelF.png" visible="false"
+            focusFootprintBitmapUri="pkg:/images/btnCancelUF.png" />
+                    <Poster id="blurOL" uri="pkg:/images/blurOL.png" width="1920" height="1080" translation="[0,0]" visible="false" />
+
+              <Navbar id="navbar" />
+    </children>
+    
+</component>

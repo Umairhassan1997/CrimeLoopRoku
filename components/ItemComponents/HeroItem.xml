@@ -1,0 +1,34 @@
+<component name="HeroItem" extends="Group">
+    <script type="text/brightscript" uri="HeroItem.brs" />
+    <interface>
+        <field id="itemContent" type="node" onChange="onItemContent" />
+        <field id="focusPercent" type="float"  />
+        <field id="rowHasFocus" type="boolean" onChange="showRowFocus" />
+        
+    </interface>
+    <children>
+                <!-- <Poster   uri="pkg:/images/heroFocus.png" translation="[0,0]" width="1584" height="440" /> -->
+
+       <MaskGroup
+      inheritParentTransform = "true"
+      masksize = "[ 1673, 506 ]"
+      translation="[0,0]"
+      
+      maskuri = "pkg:/images/heroMask.png" >  
+        <Poster scaleRotateCenter="[836,253]"  loadDisplayMode="scaleToZoom"  id="thumbnailPoster" translation="[0,0]" width="1673" height="506" />
+        </MaskGroup>
+       
+                <Label id="videoTitle" visible="true" translation="[10,336]" width="684" height="360" wrap="true"  maxLines="2" >
+                     <Font role="font" uri="pkg:/components/Fonts/Inter-Bold.otf" size="56" />
+
+                    </Label>
+
+            <Poster id="btnPC" uri="pkg:/images/btnPC.png" translation="[10,644]" width="322" height="80"  />
+
+                <Poster id="badge" uri="" translation="[242,10]" width="137" height="73"  />
+
+     
+        
+    </children>
+    
+</component>

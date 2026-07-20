@@ -1,0 +1,67 @@
+<component name="SettingScreen" extends="Group" initialFocus="btnHis">
+    <script type="text/brightscript" uri="SettingScreen.brs"  />
+      	<script type="text/brightscript" uri="pkg:/components/Navbar.brs" />
+
+    <interface>
+                        <field id="isTrialExpired" type="boolean" onChange="showSubPopup" />
+
+    </interface>
+    <children>
+        <Poster translation="[0,0]" width="1920" height="1080" uri="pkg:/images/BG.png" />
+        <Poster translation="[280,120]" width="289" height="87" uri="pkg:/images/ST.png" />
+         <Button id="btnHis" translation="[280,286]" height="151" minWidth="633"
+            maxWidth="633" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnHisF.png"
+            focusFootprintBitmapUri="pkg:/images/btnHisUF.png" /> 
+
+            <Button id="btnPP" translation="[280,456]" height="151" minWidth="633" visible="false"
+            maxWidth="633" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnPPF.png"
+            focusFootprintBitmapUri="pkg:/images/btnPPUF.png" />
+              <Button id="btnAU" translation="[280,626]" height="151" minWidth="633" visible="false"
+            maxWidth="633" iconUri="" focusedIconUri="" showFocusFootprint="true"
+            focusBitmapUri="pkg:/images/btnAUF.png"
+            focusFootprintBitmapUri="pkg:/images/btnAUUF.png" />
+
+             
+          <MarkupGrid id="videosList" 
+            itemComponentName="VideoItem"
+            translation="[1061,47]"
+            itemSpacing="[32,60]"
+            itemSize="[516,396]"
+            numRows="3"
+             numColumns="1"
+            rowFocusAnimationStyle ="fixedFocusWrap"
+            vertFocusAnimationStyle="fixedFocus"
+            drawFocusFeedback="true"
+            focusBitmapUri="pkg:/images/itemFocus.png"
+         />
+
+
+
+             <Group id="TPG" visible="false" >
+               <Poster uri="pkg:/images/BG.png" translation="[0,0]" width="1920" height="1080" />
+                  <ScrollableText 
+            translation="[300, 200]"
+            id = "legaltextLabel"
+            width="1520"
+            height="700"
+            horizAlign="center"
+            wrap="true"
+        />
+
+        </Group>
+
+
+                    <Poster id="blurOL" uri="pkg:/images/blurOL.png" width="1920" height="1080" translation="[0,0]" visible="false" />
+
+             <NavBar id="navBar" />
+
+             <Video
+            id="VideoPlayer"
+            translation="[0,0]"
+            visible="false"
+        />
+    </children>
+    
+</component>
