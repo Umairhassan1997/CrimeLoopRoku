@@ -16,7 +16,7 @@
       translation="[4,4]"
       
       maskuri = "pkg:/images/mask.png" > 
-        <Poster loadWidth="516" loadHeight="290" id="thumbnailPoster" translation="[0,0]" width="409" height="230" />
+        <Poster loadWidth="516" loadHeight="290" loadDisplayMode="scaletoZoom" id="thumbnailPoster" translation="[0,0]" width="409" height="230" />
         </MaskGroup>
          <Label id="videoTitle" translation="[20,240]" width="309" height="67" vertAlign="center" horizAlign="left" wrap="true" maxLines="2" color="#FFFFFF" >
                 <Font role="font" uri="pkg:/components/Fonts/Roboto-Regular.ttf" size="22" />

@@ -14,13 +14,13 @@
             focusBitmapUri="pkg:/images/btnCloseTF.png"
             focusFootprintBitmapUri="pkg:/images/btnCloseTUF.png" />
 
-              <Button id="btnSubscribe" translation="[566,560]" height="151" minWidth="789"
-            maxWidth="789" iconUri="" focusedIconUri="" showFocusFootprint="true"
+              <Button id="btnSubscribe" translation="[198,382]" height="537" minWidth="426"
+            maxWidth="426" iconUri="" focusedIconUri="" showFocusFootprint="true"
             focusBitmapUri="pkg:/images/btnSubTF.png"
             focusFootprintBitmapUri="pkg:/images/btnSubTUF.png" />
 
-              <Button id="btnTrial" translation="[566,751]" height="151" minWidth="789"
-            maxWidth="789" iconUri="" focusedIconUri="" showFocusFootprint="true"
+              <Button id="btnTrial" translation="[648,382]" height="537" minWidth="426"
+            maxWidth="426" iconUri="" focusedIconUri="" showFocusFootprint="true"
             focusBitmapUri="pkg:/images/btnTrialF.png"
             focusFootprintBitmapUri="pkg:/images/btnTrialUF.png" />
     </children>

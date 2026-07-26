@@ -5,6 +5,7 @@ sub init()
           m.global.audioDurationLimit= 240
         m.AppTimer=m.top.findNode("appTimer")
            m.appTimer.observeField("fire","onAppTimerFire")
+           m.appTimer.control="start"
 
         m.global.AddField("RAT","boolean",false)
     m.global.RAT=true
@@ -14,7 +15,7 @@ sub init()
          m.global.observeField("appDuration","checkAppDuration")
 
 
-    m.global.videoDurationLimit=24000000000000
+    m.global.videoDurationLimit=240
     m.global.AddField("duration","integer",false)
     m.global.AddField("videoArray","assocarray",false)
         m.global.videoArray={}
@@ -29,7 +30,7 @@ SetupGoogleAnalytics4()
              ShowTrialScreen()
           else
             VerifySubscription()
-            ShowHomeScreen()
+           
 
 
           end if
@@ -40,7 +41,7 @@ sub SetupGoogleAnalytics4()
     m.global.analytics = CreateObject("roSGNode", "GoogleAnalytics")
     m.global.analytics.callFunc("initialize", {
 
-        measurementId: "z"
+        measurementId: "G-Q2GJ9M6Q5R"
         appName: "ngkApp"
         docLocation: "https://www.google.com"
         customArgs: {}
@@ -88,60 +89,36 @@ sub startCountDown()
 end sub
 
 
+
 sub checkAppDuration()
-        ?"Check App Duration Called"m.global.appDuration
 
-    if  m.top.isSubscribed=false
-        if m.global.appDuration>=  m.global.audioDurationLimit
-            if m.screenStack<>invalid and m.screenStack[m.screenStack.Count()-1].IsSameNode(m.HomeScreen)
-                m.HomeScreen.isTrialExpired=true
-            else if m.screenStack<>invalid and m.screenStack[m.screenStack.Count()-1].IsSameNode(m.SettingsScreen)
-                                m.SettingsScreen.isTrialExpired=true
-            else if m.screenStack<>invalid and m.screenStack[m.screenStack.Count()-1].IsSameNode(m.FavoriteScreen)
-                                m.FavoriteScreen.isTrialExpired=true
-            else if m.screenStack<>invalid and m.screenStack[m.screenStack.Count()-1].IsSameNode(m.SearchScreen)
-                                m.SearchScreen.isTrialExpired=true
+        if m.global.appDuration=100 and m.top.isSubscribed=false and isUserFirst()
+            
 
-            end if
+            ShowSettingScreen()
+            m.SettingScreen.isRateUs=true
+        end if
 
-            m.global.UnobserveField("appDuration")
-   
+end sub
+
+function isUserFirst()
+        sec=CreateObject("roregistrySection","SR")
+        if sec.Exists("First")
+            return false
+        else
+            sec.Write("First","First")
+            return true
+        end if
+
   
 
-end if
-
-end if
-
-end sub
-
-sub restartAppTimer()
-    ?"retart App Timer Called"m.global.RAT
-    if m.global.RAT
-        m.appTimer.control="start"
-    else
-        m.appTimer.control="stop"
-    end if
-
-end sub
+end function
 
 
 sub onAppTimerFire()
 
     
-    today=GetTodayShortDate()
-    sec=CreateObject("roregistrySection","SleepJar"+today)
-
-    if sec.Exists("appDuration")
-        oldAppDur=sec.Read("appDuration").toInt()
-        newAppDur=oldAppDur+1
-        m.global.appDuration=newAppDur
-         sec.Write("appDuration",newAppDur.toStr())
-    else
-        m.global.appDuration=1
-
-        sec.Write("appDuration","1")
-
-    end if
+     m.global.appDuration+=1
 
 
 

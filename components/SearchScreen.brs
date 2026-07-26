@@ -100,11 +100,11 @@ sub onBtnSubmitSelect()
     
     videoGridContent = CreateObject("rosgNode", "ContentNode")
     for each video in m.VideosArray
-        if Instr(0, LCASE(video.videoTitle), LCASE(m.textLabel.text))
+        if Instr(0, LCASE(video.EpisodeTitle), LCASE(m.textLabel.text))
             childContent = videoGridContent.createChild("RowItemData")
-            childContent.videoTitle = video.VideoTitle
-            childContent.videoUrl = video.VideoURL
-            childContent.videoThumbnail = video.VideoThumbnailURL
+            childContent.videoTitle = video.EpisodeTitle
+            childContent.videoUrl = video.EpisodeURL
+            childContent.videoThumbnail = video.Thumbnail
         end if
 
     end for
@@ -138,10 +138,27 @@ sub onVideoSelect(evt)
     ?"Video Url:"m.videoIndex.videoUrl
     m.videoContent.title = m.videoIndex.videoTitle
     m.videoContent.streamFormat = "hls"
+     if m.global.duration>=m.global.videoDurationLimit and m.scene.isSubscribed=false
+
+        m.top.setFocus(false)
+        m.AppLockPopup.visible=true
+        m.AppLockPopup.setFocus(true)
+    else
+          if instr(0, m.videoIndex.videoUrl, ".mp4")
+                ?"In mp4 url"m.videoContent
+                m.videoContent.streamFormat = "mp4"
+                m.video.content = m.videoContent
+                m.video.visible = true
+                m.video.control = "play"
+                m.video.setFocus(true)
+            else
+
     m.fixTask = CreateObject("roSGNode", "FixM3U8Task")
     m.fixTask.url = m.videoIndex.videoUrl ' your original .m3u8 URL
     m.fixTask.ObserveField("fixedUrl", "onM3U8Fixed")
     m.fixTask.control = "run"
+            end if
+    end if
 end sub
 
 sub onM3U8Fixed()
@@ -198,6 +215,12 @@ function onKeyEvent(key as string, press as boolean) as boolean
         else if key = "up" and m.btnSubmit.hasFocus()
             m.btnSubmit.setFocus(false)
             m.inputKeyboard.setFocus(true)
+            return true
+             else if key="back" and m.AppLockPopup.hasFocus() 'and m.global.appDuration<  m.global.audioDurationLimit
+            m.AppLockPopup.visible=false
+            m.AppLockPopup.setFocus(false)
+           
+            m.videosList.setFocus(true)
             return true
         else if key = "back" and m.resultsGroup.visible and m.video.visible = false
             m.btnNoFav.visible = false

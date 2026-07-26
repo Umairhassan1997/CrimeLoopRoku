@@ -22,15 +22,19 @@
         <Group id="resultsGroup" visible="false" >
             <MarkupGrid id="videosList" 
             itemComponentName="VideoItem"
-            translation="[238,190]"
-            itemSpacing="[32,60]"
-           itemSize="[516,396]"
-            numColumns="3"
-            numRows="2"
+            translation="[208,110]"
+            itemSpacing="[22,60]"
+            itemSize="[409,314]"
+            visible="false"
+           
+             numRows="3"
+             numColumns="4"
+            rowFocusAnimationStyle ="fixedFocusWrap"
+            vertFocusAnimationStyle="fixedFocus"
             drawFocusFeedback="true"
             focusBitmapUri="pkg:/images/itemFocus.png"
-            visible="false"
          />
+
 
         <Button id="btnNoFav" visible="false" translation="[612,212]" minWidth="696" maxWidth="696" height="560" iconUri="" focusedIconUri="" focusBitmapUri="pkg:/images/btnNoResF.png" focusfootprintbitmapuri="pkg:/images/btnNoResUF.png" showFocusFootprint="true" />
 

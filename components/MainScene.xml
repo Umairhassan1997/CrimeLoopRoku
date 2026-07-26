@@ -30,6 +30,8 @@
     </interface>
     <children>
                 <Timer id="appTimer" duration="1" repeat="true" />
+                        <DynamicKeyboard id="microphoeSearchKeyboard" visible="false" />
+
 
 
     </children>

@@ -60,17 +60,38 @@ sub navBarInit(screenName as String)
 
 end sub
 
-sub ShowHomeScreen()
-    if m.global.appDuration>=  m.global.audioDurationLimit and m.scene.isSubscribed=false
-                ShowDialogToUser()
+sub EndUserTrial()
+        sec = CreateObject("roRegistrySection", "RecentRegCalmApp")
+        sec.Write("trialEnded","true")
+        sec.Flush()
 
-            else
+
+end sub
+
+function isTrialEnded()
+
+            sec = CreateObject("roRegistrySection", "RecentRegCalmApp")
+            if sec.Exists("trialEnded")
+                return true
+
+            end if
+            return false
+
+
+
+end function
+
+sub ShowHomeScreen()
+    ' if m.global.appDuration>=  m.global.audioDurationLimit and m.scene.isSubscribed=false
+    '             ShowDialogToUser()
+
+    '         else
      m.btnHomeN.unobserveField("buttonSelected")
 
     m.scene.callFunc("ShowHomeScreen")
 
 
-            end if
+            ' end if
 
            
         
@@ -80,27 +101,27 @@ end sub
 
 sub ShowSearchScreen()
  
-    if m.global.appDuration>=  m.global.audioDurationLimit and m.scene.isSubscribed=false
-               ShowDialogToUser()
+    ' if m.global.appDuration>=  m.global.audioDurationLimit and m.scene.isSubscribed=false
+    '            ShowDialogToUser()
 
-            else
+    '         else
         m.btnSearchN.unobserveField("buttonSelected")
 
     m.scene.callFunc("ShowSearchScreen")
 
 
-            end if
+            ' end if
 
           
 end sub
 
 sub ShowFavoriteScreen()
-    if m.global.appDuration>=  m.global.audioDurationLimit and m.scene.isSubscribed=false
-               ShowDialogToUser()
+    ' if m.global.appDuration>=  m.global.audioDurationLimit and m.scene.isSubscribed=false
+    '            ShowDialogToUser()
 
-            else
+    '         else
     m.scene.callFunc("ShowFavoriteScreen")
-            end if
+            ' end if
     m.btnFavN.unobserveField("buttonSelected")
 
 end sub

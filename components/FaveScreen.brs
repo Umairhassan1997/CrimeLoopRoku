@@ -37,6 +37,7 @@ sub showSubPopup()
         m.AppLockPopup.setFocus(true)
             m.video.visible=false
         m.video.control="stop"
+        EndUserTrial()
         
         m.top.isTrialExpired=false
 
@@ -236,10 +237,26 @@ sub onVideoSelect(evt)
     ?"Video Url:"m.videoIndex.videoUrl
     m.videoContent.title=m.videoIndex.videoTitle
     m.videoContent.streamFormat="hls"
+      if m.global.duration>=m.global.videoDurationLimit and m.scene.isSubscribed=false
+        m.top.setFocus(false)
+        m.AppLockPopup.visible=true
+        m.AppLockPopup.setFocus(true)
+    else
+          if instr(0, m.videoIndex.videoUrl, ".mp4")
+                ?"In mp4 url"m.videoContent
+                m.videoContent.streamFormat = "mp4"
+                m.video.content = m.videoContent
+                m.video.visible = true
+                m.video.control = "play"
+                m.video.setFocus(true)
+            else
+
     m.fixTask = CreateObject("roSGNode", "FixM3U8Task")
     m.fixTask.url = m.videoIndex.videoUrl ' your original .m3u8 URL
     m.fixTask.ObserveField("fixedUrl", "onM3U8Fixed")
     m.fixTask.control = "run"
+            end if
+    end if
 
    
 
@@ -273,6 +290,12 @@ function onKeyEvent(key as string, press as boolean) as boolean
             m.video.setFocus(false)
            m.videosList.setFocus(true)
            result=true
+            else if key="back" and m.AppLockPopup.hasFocus() 'and m.global.appDuration<  m.global.audioDurationLimit
+            m.AppLockPopup.visible=false
+            m.AppLockPopup.setFocus(false)
+         
+            m.videosList.setFocus(true)
+            return true
             ' else if key="up" and (m.videosList.hasFocus() or m.btnNoFav.hasFocus())
             ' m.videosList.setFocus(false)
             ' m.btnNoFav.setFocus(false)

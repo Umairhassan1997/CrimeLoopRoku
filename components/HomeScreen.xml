@@ -14,8 +14,8 @@
             itemSpacing="[2000,2000]"
             itemSize="[1673,506]"
             rowItemSize = "[ [1673, 506]]"
-            
-            numRows="1"
+             rowItemSpacing="[[22,40]]"
+            numRows="2"
             rowFocusAnimationStyle ="fixedFocus"
             drawFocusFeedback="false"
          />
@@ -52,28 +52,28 @@
         <Group id="videosGroup" translation="[0,0]" >
 
                 <Button id="btnCat1" focusable="true" iconUri=""
-                text="" focusedIconUri="" visible="true" translation="[208, 520]"
+                text="" focusedIconUri="" visible="false" translation="[208, 520]"
                 maxWidth="231" minWidth="231" height="80"
                 focusBitmapUri="pkg:/images/btnCat1F.png"
                 focusFootprintBitmapUri="pkg:/images/btnCat1S.png" showFocusFootprint="true" />
 
                 <Button id="btnCat2" focusable="true" iconUri=""
-                text="" focusedIconUri="" visible="true" translation="[449, 520]"
+                text="" focusedIconUri="" visible="false" translation="[449, 520]"
                 maxWidth="231" minWidth="231" height="80"
                 focusBitmapUri="pkg:/images/btnCat2F.png"
                 focusFootprintBitmapUri="pkg:/images/btnCat2UF.png" showFocusFootprint="true" />
                   <Button id="btnCat3" focusable="true" iconUri=""
-                text="" focusedIconUri="" visible="true" translation="[690, 520]"
+                text="" focusedIconUri="" visible="false" translation="[690, 520]"
                 maxWidth="231" minWidth="231" height="80"
                 focusBitmapUri="pkg:/images/btnCat3F.png"
                 focusFootprintBitmapUri="pkg:/images/btnCat3UF.png" showFocusFootprint="true" />
                 <Button id="btnCat4" focusable="true" iconUri=""
-                text="" focusedIconUri="" visible="true" translation="[931, 520]"
+                text="" focusedIconUri="" visible="false" translation="[931, 520]"
                 maxWidth="231" minWidth="231" height="80"
                 focusBitmapUri="pkg:/images/btnCat4F.png"
                 focusFootprintBitmapUri="pkg:/images/btnCat4UF.png" showFocusFootprint="true" />
   <Button id="btnCat5" focusable="true" iconUri=""
-                text="" focusedIconUri="" visible="true" translation="[1172, 520]"
+                text="" focusedIconUri="" visible="false" translation="[1172, 520]"
                 maxWidth="231" minWidth="231" height="80"
                 focusBitmapUri="pkg:/images/btnCat5F.png"
                 focusFootprintBitmapUri="pkg:/images/btnCat5UF.png" showFocusFootprint="true" />
@@ -88,15 +88,14 @@
 
           <RowList id="videosList" 
             itemComponentName="SingleRowItem"
-            translation="[208,650]"
-            itemSpacing="[22,32]"
-            rowItemSpacing="[[22,60]]"
+            translation="[208,480]"
+            itemSpacing="[22,72]"
+            rowItemSpacing="[[22,120]]"
             itemSize="[1856,314]"
             rowItemSize = "[ [409, 314]]"
-            showRowLabel="false"
+            showRowLabel="true"
             rowLabelColor="#FFFFFF"
-             numRows="1"
-             numColumns="5"
+             numRows="3"
             rowFocusAnimationStyle ="floatingFocus"
             drawFocusFeedback="false"
          >
@@ -108,7 +107,7 @@
 
           <MarkupGrid id="videosGrid" 
             itemComponentName="VideoItem"
-            translation="[208,710]"
+            translation="[208,510]"
             itemSpacing="[22,60]"
             itemSize="[409,314]"
             visible="false"
