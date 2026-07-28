@@ -7,6 +7,7 @@
         "source/**/*.brs",
         "components/**/*.brs",
         "components/**/*.xml",
-        "images/**/*"
+        "images/**/*",
+        "json/**/*"
     ]
 }

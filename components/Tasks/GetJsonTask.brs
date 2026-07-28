@@ -1,16 +1,18 @@
 sub init()
-m.top.functionname="JsontoContent"
+    m.top.functionName = "JsontoContent"
 end sub
 
-sub jsontoContent()
-     xfer = CreateObject("roURLTransfer")
-  xfer.SetCertificatesFile("common:/certs/ca-bundle.crt")
-  xfer.SetURL("https://roku-content.b-cdn.net/Jsons/MVs.json")
-  ' xfer.SetURL("https://devtest-storage.b-cdn.net/Roku/KT/Jsons/as.json")
-  rsp = xfer.GetToString()
-  json = ParseJson(rsp)
-  if json<>invalid
-    m.top.content=json
-  end if
+sub JsontoContent()
+    jsonText = ReadAsciiFile("pkg:/json/home.json")
+    if jsonText = invalid or jsonText = ""
+        ?"GetJsonTask: failed to read pkg:/json/home.json"
+        return
+    end if
 
+    json = ParseJson(jsonText)
+    if json <> invalid
+        m.top.content = json
+    else
+        ?"GetJsonTask: failed to parse home.json"
+    end if
 end sub

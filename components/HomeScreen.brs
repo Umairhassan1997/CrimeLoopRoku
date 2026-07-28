@@ -348,10 +348,7 @@ sub onvideoSelect(evt)
             m.videoContent = CreateObject("rosgNode", "ContentNode")
             m.videoContent.url = m.videoIndex.videoUrl
             m.videoContent.title = m.videoIndex.videoTitle
-            m.videoContent.streamFormat = "mp4"
-            '  if m.videoIndex.type="Free"
-                ?"In mp4 url"m.videoContent
-                m.videoContent.streamFormat = "mp4"
+            m.videoContent.streamFormat = GetStreamFormat(m.videoIndex.videoUrl)
                 m.video.content = m.videoContent
                 m.video.visible = true
                 m.video.control = "play"
@@ -424,7 +421,7 @@ sub onHeroSelect(evt)
     m.videoContent.title = m.videoIndex.videoTitle
     AddToRecents(m.videoIndex)
 
-    m.videoContent.streamFormat = "mp4"
+    m.videoContent.streamFormat = GetStreamFormat(m.videoIndex.videoUrl)
     if (m.global.appDuration >= m.global.audioDurationLimit or m.videoIndex.type = "Paid") and m.scene.isSubscribed=false
         showAppLockPopup()
 
@@ -436,8 +433,6 @@ sub onHeroSelect(evt)
             m.AppLockPopup.visible = true
             m.AppLockPopup.setFocus(true)
         else
-                ?"In mp4 url"m.videoContent
-                m.videoContent.streamFormat = "mp4"
                 m.video.content = m.videoContent
                 m.video.visible = true
                 m.video.control = "play"
@@ -478,6 +473,17 @@ sub onM3U8Fixed()
 
     end if
 end sub
+
+function GetStreamFormat(url as dynamic) as string
+    if url = invalid or url = ""
+        return "mp4"
+    end if
+    lowerUrl = LCase(url.toStr())
+    if right(lowerUrl, 5) = ".m3u8" or lowerUrl.Instr(".m3u8?") > 0
+        return "hls"
+    end if
+    return "mp4"
+end function
 
 function ShuffleArray(arr as object) as object
     shuffled = []
@@ -549,63 +555,62 @@ sub SetContent()
     m.videosArray = m.VideoArrayGetter.content
     m.global.videoArray = m.videosArray
 
-    keyArray = m.videosArray.keys()
+    ' Fixed home rows from local sheet JSON (replaces Action / Adventure / etc.)
+    keyArray = [
+        "JCS Criminal Psychology",
+        "MV Central",
+        "ThatChapter",
+        "Explore with us"
+    ]
 
-    ' Parent node for all rows
     videoGridContent = CreateObject("roSGNode", "ContentNode")
 
     for each categoryKey in keyArray
+        if m.videosArray.DoesExist(categoryKey)
+            categoryData = m.videosArray[categoryKey]
+            if categoryData <> invalid and categoryData.Count() > 0
+                rowArray = SubArr(categoryData, 0, 5)
+                rowArray = ShuffleArray(rowArray)
 
-        categoryData = m.videosArray[categoryKey]
+                viewAll = {
+                    Thumbnail: "pkg:/images/VAPH.png"
+                    EpisodeURL: ""
+                    EpisodeTitle: ""
+                }
+                rowArray.push(viewAll)
 
-        ' Take first 5 videos per category
-        rowArray = SubArr(categoryData, 0, 5)
-        rowArray = ShuffleArray(rowArray)
+                rowNode = CreateObject("roSGNode", "ContentNode")
+                rowNode.title = categoryKey
 
-        viewAll = {
-            Thumbnail: "pkg:/images/VAPH.png"
-            EpisodeURL: ""
-            EpisodeTitle: ""
-        }
-        rowArray.push(viewAll)
+                i = 0
+                for each video in rowArray
+                    if video <> invalid and video.EpisodeTitle <> invalid
+                        item = rowNode.createChild("RowItemData")
+                        item.videoTitle = video.EpisodeTitle
+                        item.videoUrl = video.EpisodeURL
+                        item.videoThumbnail = video.Thumbnail
+                        if video.isNew <> invalid
+                            item.isNew = video.isNew
+                        else
+                            item.isNew = false
+                        end if
 
-        ' Create row node
-        rowNode = CreateObject("roSGNode", "ContentNode")
-        rowNode.title = categoryKey ' shows category name if supported
+                        if i < 5 or m.scene.isSubscribed
+                            item.type = "Free"
+                        else
+                            item.type = "Paid"
+                        end if
 
-        i = 0
-        for each video in rowArray
-            ?"video"video
-                        if video<>invalid and video.EpisodeTitle<>invalid
+                        i++
+                    end if
+                end for
 
-            item = rowNode.createChild("RowItemData")
-            ?"item"item
-            item.videoTitle = video.EpisodeTitle
-            item.videoUrl = video.EpisodeURL
-            item.videoThumbnail = video.Thumbnail
-            if video.isNew<>invalid
-                item.isNew=video.isNew
-            else
-                item.isNew=false
+                videoGridContent.appendChild(rowNode)
             end if
-
-            if i < 5 or m.scene.isSubscribed
-                item.type = "Free"
-            else
-                item.type = "Paid"
-            end if
-
-            i++
         end if
-        end for
-
-        ' Add row to grid
-        videoGridContent.appendChild(rowNode)
-
     end for
 
     m.videosList.content = videoGridContent
-    ?"Video Items"m.videosList.content.GetChildCount()
     m.videosList.setFocus(true)
 end sub
 

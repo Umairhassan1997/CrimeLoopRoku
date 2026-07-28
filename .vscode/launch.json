@@ -12,9 +12,9 @@
                 "manifest",
                 "source/**/*",
                 "components/**/*",
-                "images/**/*"
-            ],
-            
+                "images/**/*",
+                "json/**/*"
+            ]
         }
     ]
 }
