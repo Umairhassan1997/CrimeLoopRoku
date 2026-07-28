@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "BrightScript Debug: Launch",
+            "type": "brightscript",
+            "request": "launch",
+            "host": "192.168.0.112",
+            "password": "0000",
+            "rootDir": "${workspaceFolder}",
+            "files": [
+                "manifest",
+                "source/**/*",
+                "components/**/*",
+                "images/**/*"
+            ],
+            
+        }
+    ]
+}
