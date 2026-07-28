@@ -1,6 +1,4 @@
 <component name="Navbar" extends="Group">
-    <script type="text/brightscript"  />
-
 <children>
     <Poster id="NBG" uri="pkg:/images/nBC.png"  width="198" height="1080" translation="[0,0]" />
 
