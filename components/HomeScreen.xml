@@ -31,7 +31,7 @@
         </MaskGroup>
        
                 <Label id="videoTitle" visible="true" translation="[238,306]" width="744" height="200" wrap="true"  maxLines="2" >
-                     <Font role="font" uri="pkg:/components/Fonts/Inter-Bold.otf" size="56" />
+                     <Font role="font" uri="pkg:/components/fonts/Inter-Bold.otf" size="56" />
 
                     </Label>
 
@@ -99,7 +99,7 @@
             rowFocusAnimationStyle ="floatingFocus"
             drawFocusFeedback="false"
          >
-                     <Font role="rowLabelFont" uri="pkg:/components/Fonts/lmm.ttf" size="32" />
+                     <Font role="rowLabelFont" uri="pkg:/components/fonts/lmm.ttf" size="32" />
 
 
          </RowList>
