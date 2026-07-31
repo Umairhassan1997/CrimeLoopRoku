@@ -35,19 +35,14 @@ function StartSubscription()
     ' m.order_identifier = "Test_Product_1_Discounted"
     ' m.order_price = "1.99"
 
-    if m.top.isSubYearly=false
-   m.order_title = "123Movies - Free Movies & TV Monthly"
-   m.order_identifier = "123MoviesFreeMoviesTVMonthly"
-    m.order_price = "4.99"
-    
+    if m.top.isSubYearly = false
+        m.order_title = "CrimeLoop Monthly"
+        m.order_identifier = "CrimeLoopMonthly"
+        m.order_price = "3.99"
     else
-   m.order_title = "123Movies - Free Movies & TV Yearly"
-   m.order_identifier = "123MoviesFreeMoviesTVYearly"
-    m.order_price = "44.99"
-   
-    
-
-
+        m.order_title = "CrimeLoop Yearly"
+        m.order_identifier = "CrimeLoopYearly"
+        m.order_price = "29.99"
     end if
 
    m.global.AddField("channelStore", "node", false)
