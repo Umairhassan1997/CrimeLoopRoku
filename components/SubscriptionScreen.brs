@@ -22,7 +22,7 @@ sub init()
     m.btnMonthly = m.top.findNode("btnMonthly")
     m.btnYearly = m.top.findNode("btnYearly")
     m.btnCancel = m.top.findNode("btnCancel")
-    m.btnMonthly.setFocus(true)
+    m.btnYearly.setFocus(true)
     m.top.observeField("visible", "onVisibleChange")
 
 
@@ -83,7 +83,7 @@ sub onVisibleChange()
     if m.top.visible
 
         navBarInit("Sub")
-        m.btnMonthly.setFocus(true)
+        m.btnYearly.setFocus(true)
         revertButtons()
         resetAndStartTimer()
 
@@ -205,3 +205,24 @@ function onKeyEvent(key as string, press as boolean) as boolean
     end if
 
 end function
+
+sub focusYearlyPackage()
+    applyYearlyFocus()
+    if m.yearlyFocusTimer = invalid
+        m.yearlyFocusTimer = createObject("roSGNode", "Timer")
+        m.yearlyFocusTimer.duration = 0.05
+        m.yearlyFocusTimer.repeat = false
+        m.yearlyFocusTimer.observeField("fire", "applyYearlyFocus")
+    end if
+    m.yearlyFocusTimer.control = "stop"
+    m.yearlyFocusTimer.control = "start"
+end sub
+
+sub applyYearlyFocus()
+    if m.btnMonthly <> invalid
+        m.btnMonthly.setFocus(false)
+    end if
+    if m.btnYearly <> invalid
+        m.btnYearly.setFocus(true)
+    end if
+end sub

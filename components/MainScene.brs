@@ -21,6 +21,8 @@ sub init()
         m.global.videoArray={}
  m.global.duration=(getCurrentDuration()).toInt()
     m.global.observeField("duration","checkCurrentDuration")
+m.monthlyDiscountPopupShown = false
+m.yearlyDiscountPopupOpen = false
 InitScreenStack()
 SetupGoogleAnalytics4()
 
@@ -162,6 +164,10 @@ function OnKeyEvent(key as string, press as boolean) as boolean
    if press
        ' handle "back" key press
        if key = "back"
+           if m.yearlyDiscountPopupOpen = true
+               onYearlyDiscountPopupClosed()
+               result = true
+           else
            ?"Back Pressed Event in MainScene"
            numberOfScreens = m.screenStack.Count()
            ?"number of screens"numberOfScreens
@@ -173,6 +179,7 @@ function OnKeyEvent(key as string, press as boolean) as boolean
                result = true
            
 
+           end if
            end if
 
 

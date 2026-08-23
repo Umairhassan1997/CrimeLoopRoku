@@ -10,12 +10,42 @@ ShowScreen(m.SubscriptionScreen)
 end sub
 
 sub onbtnMonthlySelect()
+    if m.monthlyDiscountPopupShown = false
+        m.monthlyDiscountPopupShown = true
+        showYearlyDiscountPopup()
+        return
+    end if
+
     m.global.analytics.callFunc("logEvent", "monthly_product_selected", {
             "screen_name": "OnboardingScreen"
         })
     m.top.isSubYearly=false
     StartSubscription()
 
+end sub
+
+sub showYearlyDiscountPopup()
+    dialog = CreateObject("roSGNode", "StandardMessageDialog")
+    dialog.title = "Save more with the Yearly Plan!"
+    dialog.message = ["The Yearly subscription offers a better value with a significant discount compared to the Monthly plan."]
+    dialog.buttons = ["OK"]
+    dialog.observeField("buttonSelected", "onYearlyDiscountPopupClosed")
+    dialog.observeField("wasClosed", "onYearlyDiscountPopupClosed")
+    m.yearlyDiscountPopupOpen = true
+    m.top.dialog = dialog
+end sub
+
+sub onYearlyDiscountPopupClosed()
+    m.yearlyDiscountPopupOpen = false
+    if m.top.dialog <> invalid
+        m.top.dialog.UnobserveField("buttonSelected")
+        m.top.dialog.UnobserveField("wasClosed")
+        m.top.dialog.close = true
+        m.top.dialog = invalid
+    end if
+    if m.SubscriptionScreen <> invalid
+        m.SubscriptionScreen.callFunc("focusYearlyPackage")
+    end if
 end sub
 
 sub onbtnYearlySelect()

@@ -1,10 +1,11 @@
-<component name="SubscriptionScreen" extends="Group" initialFocus="btnMonthly" >
+<component name="SubscriptionScreen" extends="Group" initialFocus="btnYearly" >
     <script type="text/brightscript" uri="SubscriptionScreen.brs"   />
             <script type="text/brightscript" uri="Navbar.brs" />
 
     <interface>
                    <field id="btnMonthlySelect" alias="btnMonthly.buttonSelected" />
                     <field id="btnYearlySelect" alias="btnYearly.buttonSelected" />
+                    <function name="focusYearlyPackage" />
  
         
     </interface>
