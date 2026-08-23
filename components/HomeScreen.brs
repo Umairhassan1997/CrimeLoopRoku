@@ -561,7 +561,8 @@ sub SetContent()
         "MV Central",
         "ThatChapter",
         "Explore with us",
-        "Kendall Rae"
+        "Kendall Rae",
+        "Bailey Sarian"
     ]
 
     videoGridContent = CreateObject("roSGNode", "ContentNode")
